@@ -4,8 +4,8 @@ void setup() {
   surface.setTitle("Casino");
 
   cards = new ArrayList<Card>();
-  for (int i = 0; i < 3; i = i+1) {
-    cards.add( new Card(int(random(40, width - 40)), int(random(40, height - 40)), int(random(0, 52))));
+  for (int i = 0; i < 7; i = i+1) {
+    cards.add( new Card(int(random(53, width - 53)), int(random(97, height - 97)), int(random(0, 52))));
   }
 }
 
