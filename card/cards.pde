@@ -9,7 +9,7 @@ class Card {
   }
   
   public void drawCard() {
-    currentCard = loadImage("card" + cardID);
+    currentCard = loadImage("card" + cardID + ".gif");
     image(currentCard,cardX,cardY);
   }
   
