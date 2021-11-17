@@ -1,3 +1,7 @@
+/*
+Card class- loads cards and their IDs
+*/
+
 class Card {
   private PImage currentCard;
   private int cardX, cardY, cardID; 
