@@ -4,8 +4,7 @@ Card class- loads cards and their IDs
 
 class Card {
   private PImage pic;
-  //public Boolean doubled;
-  //private int cardX, cardY, cardID;
+  private int cardX, cardY;
 
   private int value;
   private String suit;
@@ -20,16 +19,16 @@ class Card {
 
   private void loadCorrectImage() {
     String fileName;   
-    if (suit == 10) {
-      fileName = ("jack" + suit);
-    } else if (suit == 11) {
-      fileName = ("queen" + suit);
-    } else if (suit == 12) {
-      fileName = ("king" + suit);
-    } else if (suit == 1) {
-      fileName = ("ace" + suit);
+    if (value == 10) {
+      fileName = ("jack" + suit + ".GIF");
+    } else if (value == 11) {
+      fileName = ("queen" + suit + ".GIF");
+    } else if (value == 12) {
+      fileName = ("king" + suit + ".GIF");
+    } else if (value == 1) {
+      fileName = ("ace" + suit + ".GIF");
     } else {
-      fileName = value + suit;
+      fileName = value + suit + ".GIF";
     }
 
 
@@ -37,12 +36,16 @@ class Card {
   }
 
   public void drawCard(int cX, int cY) {
-    //cardX = cX;
-    //cardY = cY;
-    //currentCard = loadImage("card" + cardID + ".gif");
-    //image(currentCard, cardX, cardY);
+    cardX = cX;
+    cardY = cY;
+    image(pic, cardX, cardY);
   }
 
   public int getValue() {
+    if (value > 10) {
+      return 10;
+    } else {
+      return value;
+    }
   }
 }

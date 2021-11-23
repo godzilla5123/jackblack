@@ -1,21 +1,34 @@
 ArrayList<Card> cards;
+ArrayList<Hand> hands;
+String suits[] = {"clubs", "hearts", "spades", "diamonds"};
 
-public int[] deck = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-
-//deck = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51};
 void setup() {
   size(900, 900);
   surface.setTitle("Casino");
 
   cards = new ArrayList<Card>();
-  for (int i = 0; i < 7; i = i+1) {
-    cards.add( new Card(int(random(0, 52))));
+  for (int i = 0; i < 3; i = i+1) {
+    cards.add( new Card(int(random(1,12)), suits[int(random(0,3))] ) );
   }
+  hands = new ArrayList<Hand>();
+  int deckCard = 0;
+  for (int i = 0; i < (cards.size() / 2); i = i+1) {
+    hands.add( new Hand(cards.get(deckCard), cards.get(deckCard++)));
+    deckCard += 2;
   }
+}
 
 void draw() {
   background(0, 255, 0);
-  for (int i = 0; i <= cards.size() - 1; i++) {
-    cards.get(i).drawCard(int(random(53, width - 53)), int(random(97, height - 97)));
+  int handX = 50;
+  int handY = 450;
+  for (int i = 0; i <= hands.size() - 1; i++) {
+    hands.get(i).drawHand(handX,handY);
+    
+    handX += 120;
   }
+}
+
+void mouseClicked() {
+  hands.get(0).getValue();
 }
