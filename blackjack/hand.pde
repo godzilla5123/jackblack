@@ -50,6 +50,7 @@ class Hand {
     }
   
   println("the hand value is " + value);
+    println("ace count: " + ace);
   return value;
 }
 }
