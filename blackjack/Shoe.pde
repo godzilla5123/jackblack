@@ -26,7 +26,7 @@ class Shoe {
   }
 
   public Card grabCard() {
-    Card c = deck.get(int(random(0, deck.size() - 1)));  
+    Card c = deck.remove(int(random(0, deck.size() - 1)));  
     return (c);
   }
 }

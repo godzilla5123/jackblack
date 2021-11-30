@@ -21,10 +21,11 @@ class Hand {
   public void addCard(Card c) {
     currentHandList.add(c);
   }
+  
   public void drawHand(int x, int y)
   {
-    for (int i = 0; i <= cards.size() - 1; i++) {
-      cards.get(i).drawCard(x, y);
+    for (int i = 0; i <= currentHandList.size() - 1; i++) {
+      currentHandList.get(i).drawCard(x, y);
       x += 15;
       y -= 15;
     }
@@ -34,9 +35,9 @@ class Hand {
   {
     int ace = 0;
     int value = 0;
-    for (int i = 0; i <= cards.size() - 1; i++) {
-      if (cards.get(i).getValue() != 1) {
-        value += cards.get(i).getValue();
+    for (int i = 0; i <= currentHandList.size() - 1; i++) {
+      if (currentHandList.get(i).getValue() != 1) {
+        value += currentHandList.get(i).getValue();
       } else {
         ace++;
       }
