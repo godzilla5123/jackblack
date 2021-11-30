@@ -1,30 +1,27 @@
 ArrayList<Card> cards;
 ArrayList<Hand> hands;
+ArrayList<Shoe> shoes;
 String suits[] = {"clubs", "hearts", "spades", "diamonds"};
 
 void setup() {
   size(900, 900);
   surface.setTitle("Casino");
-
+  shoes = new ArrayList<Shoe>();
   cards = new ArrayList<Card>();
-  for (int i = 0; i < 3; i = i+1) {
-    cards.add( new Card(int(random(1,12)), suits[int(random(0,3))] ) );
-  }
   hands = new ArrayList<Hand>();
-  int deckCard = 0;
-  for (int i = 0; i < (cards.size() / 2); i = i+1) {
-    hands.add( new Hand(cards.get(deckCard), cards.get(deckCard++)));
-    deckCard += 2;
+  shoes.add( new Shoe(3));
+  for (int i = 0; i < 3; i = i+1) {
+    hands.add(new Hand(shoes.get(0).grabCard(), shoes.get(0).grabCard()));
   }
 }
 
 void draw() {
   background(0, 255, 0);
-  int handX = 50;
+  int handX = 70;
   int handY = 450;
   for (int i = 0; i <= hands.size() - 1; i++) {
-    hands.get(i).drawHand(handX,handY);
-    
+    hands.get(i).drawHand(handX, handY);
+
     handX += 120;
   }
 }

@@ -5,7 +5,7 @@ Card class- loads cards and their IDs
 class Card {
   private PImage pic;
   private int cardX, cardY;
-
+  private String fileName; 
   private int value;
   private String suit;
 
@@ -18,24 +18,22 @@ class Card {
   }
 
   private void loadCorrectImage() {
-    String fileName;   
-    if (value == 10) {
+
+    if (value == 11) {
       fileName = ("jack" + suit + ".GIF");
-    } else if (value == 11) {
-      fileName = ("queen" + suit + ".GIF");
     } else if (value == 12) {
+      fileName = ("queen" + suit + ".GIF");
+    } else if (value == 13) {
       fileName = ("king" + suit + ".GIF");
     } else if (value == 1) {
       fileName = ("ace" + suit + ".GIF");
     } else {
       fileName = value + suit + ".GIF";
     }
-
-
-    pic = loadImage(fileName);
   }
 
   public void drawCard(int cX, int cY) {
+    pic = loadImage(fileName);
     cardX = cX;
     cardY = cY;
     image(pic, cardX, cardY);

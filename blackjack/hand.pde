@@ -12,13 +12,15 @@ Hand class- shows and processes the hand of Blackjack
 
 class Hand {
   private ArrayList<Card> currentHandList;
-  private int value = 0;
+
   public Hand(Card c1, Card c2) {
     currentHandList = new ArrayList<Card>();
     currentHandList.add(c1);
     currentHandList.add(c2);
   }
-
+  public void addCard(Card c) {
+    currentHandList.add(c);
+  }
   public void drawHand(int x, int y)
   {
     for (int i = 0; i <= cards.size() - 1; i++) {
@@ -31,9 +33,9 @@ class Hand {
   public int getValue()
   {
     int ace = 0;
-    value = 0;
+    int value = 0;
     for (int i = 0; i <= cards.size() - 1; i++) {
-      if (cards.get(i).getValue() > 1) {
+      if (cards.get(i).getValue() != 1) {
         value += cards.get(i).getValue();
       } else {
         ace++;
@@ -41,16 +43,15 @@ class Hand {
     }
     if (ace > 0) {
       if (value > 11) {
-        for (int i = 0; i <= ace; i++) {
+        for (int i = 0; i < ace; i++) {
           value++;
         }
       } else if (value < 11 && ace == 1) {
         value += 11;
       }
     }
-  
-  println("the hand value is " + value);
+    println("the hand value is " + value);
     println("ace count: " + ace);
-  return value;
-}
+    return value;
+  }
 }
