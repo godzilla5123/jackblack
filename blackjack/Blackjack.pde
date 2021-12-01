@@ -2,7 +2,8 @@
 ArrayList<Hand> hands;
 //ArrayList<Shoe> shoes;
 
-Hand h;
+// for singleplayer - replace hands with h and delete all 
+//Hand h;
 Shoe s;
 
 String suits[] = {"clubs", "hearts", "spades", "diamonds"};
@@ -13,13 +14,11 @@ void setup() {
   //shoes = new ArrayList<Shoe>();
   //cards = new ArrayList<Card>();
   hands = new ArrayList<Hand>();
-  s = new Shoe(1);
-   for (int i = 0; i < 7; i = i+1) {
+  s = new Shoe(3);
+  for (int i = 0; i < 7; i = i+1) {
     hands.add(new Hand(s.grabCard(), s.grabCard()));
     hands.get(i).addCard(s.grabCard());
   }
- 
-
 }
 
 void draw() {

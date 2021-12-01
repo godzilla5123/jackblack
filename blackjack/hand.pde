@@ -26,8 +26,8 @@ class Hand {
   {
     for (int i = 0; i <= currentHandList.size() - 1; i++) {
       currentHandList.get(i).drawCard(x, y);
-      x += 15;
-      y -= 15;
+      x += 12;
+      y -= 12;
     }
   }
 
@@ -39,16 +39,13 @@ class Hand {
       if (currentHandList.get(i).getValue() != 1) {
         value += currentHandList.get(i).getValue();
       } else {
+        value++;
         ace++;
       }
     }
     if (ace > 0) {
-      if (value > 11) {
-        for (int i = 0; i < ace; i++) {
-          value++;
-        }
-      } else if (value < 11 && ace == 1) {
-        value += 11;
+      if (value <= 11) {
+        value += 10;
       }
     }
     println("the hand value is " + value);
