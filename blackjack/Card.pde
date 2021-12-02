@@ -8,17 +8,27 @@ class Card {
   private String fileName; 
   private int value;
   private String suit;
-
+  //private Boolean hidden = false;
+  
   public Card(int val, String su) {
     //cardID = cID;
     value = val;
     suit = su;
-
-    loadCorrectImage();
+        loadCorrectImage();
   }
+  //public Card(int val, String su, Boolean h) {
+  //  //cardID = cID;
+  //  value = val;
+  //  suit = su;
+  //  hidden = h;
+
+//    loadCorrectImage();
+//  }
 
   private void loadCorrectImage() {
-
+    //if (hidden) {
+    // fileName = "back1.GIF";
+    //} else 
     if (value == 11) {
       fileName = ("jack" + suit + ".GIF");
     } else if (value == 12) {
