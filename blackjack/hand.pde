@@ -21,7 +21,7 @@ class Hand {
   public void addCard(Card c) {
     currentHandList.add(c);
   }
-  
+
   public void drawHand(int x, int y)
   {
     for (int i = 0; i <= currentHandList.size() - 1; i++) {
