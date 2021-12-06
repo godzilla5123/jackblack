@@ -24,11 +24,14 @@ class Hand {
 
   public void drawHand(int x, int y)
   {
-    for (int i = 0; i <= currentHandList.size() - 1; i++) {
-      currentHandList.get(i).drawCard(x, y);
-      x += 12;
-      y -= 12;
-    }
+    drawCard(x, y);
+  }
+
+  public void dealerDrawHand(int x, int y) {
+    if (currentHandList.size() == 2) {
+      currentHandList.get(0).hidden = true;
+    } else {currentHandList.get(0).hidden = false;}
+    drawCard(x, y);
   }
 
   public int getValue()
@@ -48,8 +51,18 @@ class Hand {
         value += 10;
       }
     }
-    println("the hand value is " + value);
-    println("ace count: " + ace);
+
     return value;
+  }
+
+  void drawCard(int x, int y) {
+    for (int i = 0; i <= currentHandList.size() - 1; i++) {
+      currentHandList.get(i).drawCard(x, y);
+      x += 14;
+      y += 14;
+    }
+    fill(0);
+    textSize(26);
+    text(getValue(), x, y- 35);
   }
 }

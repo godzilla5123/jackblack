@@ -9,31 +9,41 @@
  
  */
 class Game {
-ArrayList<Hand> hands;
-  
+  ArrayList<Hand> hands;
+  int playerBalance;
+
   public Game() {
     hands = new ArrayList<Hand>();
+    playerBalance = 1000;
   }
 
   public void newGame(int playerCount) {
-   // creates 14 hands, to be fixed
-    for (int i = 0; i < playerCount; i = i+1) {
+    hands.clear();
+
+    for (int i = 0; i < playerCount + 1; i = i+1) {
       hands.add(new Hand(s.grabCard(), s.grabCard()));
     }
   }
+
+  public void grabCard(int h) {
+    hands.get(h).addCard(s.grabCard());
+  }
   
   
-  
+
   public void drawCards(int handX, int handY) {
     // draws player hands
-    hands.get(0).drawHand(int(width * .47), int(height * .15));
-   for (int i = 1; i <= hands.size() - 1; i++) {
-    hands.get(i).drawHand(handX, handY);
-    handX += 140;
-    if (handX > 1100 + 30) {
-      handY += 140;
-      handX = 30;
+    hands.get(0).dealerDrawHand(int(width * .47), int(height * .15));
+    for (int i = 1; i <= hands.size() - 1; i++) {
+      hands.get(i).drawHand(handX, handY);
+      handX += 140;
     }
   }
+
+ public int getHandCount() {
+   return hands.size() - 1;
+ }
+  public int getPlayerBalance() {
+    return playerBalance;
   }
 }

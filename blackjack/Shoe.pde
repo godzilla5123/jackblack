@@ -9,21 +9,11 @@ class Shoe {
    */
 
   private ArrayList<Card> deck;
- private int deckLength;
+  private int deckLength;
 
   public Shoe(int d) {
-    deck = new ArrayList<Card>();
-     deckLength = d;
-    for (int i = 1; i <= d; i++) {
-      for (int b = i; b <= 13; b++) {
-        deck.add(new Card( b, "clubs"));
-        deck.add(new Card( b, "spades"));
-        deck.add(new Card( b, "hearts"));
-        deck.add(new Card( b, "diamonds"));
-      }
-    }
-    println("done");
-    println(deck.size());
+    deckLength = d;
+    shoeReset();
   }
 
   public int cardsLeft()
@@ -38,6 +28,7 @@ class Shoe {
 
   public void shoeReset()
   {
+    deck = new ArrayList<Card>();
     for (int i = 1; i <= deckLength; i++) {
       for (int b = i; b <= 13; b++) {
         deck.add(new Card( b, "clubs"));
