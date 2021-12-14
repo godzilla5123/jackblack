@@ -9,7 +9,7 @@ void setup() {
   s = new Shoe(4);
   g = new Game();
   
-  g.newGame(3);
+  g.newGame();
   
   }
 
@@ -23,7 +23,7 @@ void draw() {
 void mouseClicked() {
 
   //s.shoeReset();
-  g.newGame(3);
+  g.newGame();
  
 }
 

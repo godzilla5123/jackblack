@@ -9,41 +9,57 @@
  
  */
 class Game {
-  ArrayList<Hand> hands;
+  ArrayList<Hand> playerHand;
+  Hand dealerHand;
   int playerBalance;
 
   public Game() {
-    hands = new ArrayList<Hand>();
+    dealerHand = (new Hand(s.grabCard(), s.grabCard()));
+    playerHand = new ArrayList<Hand>();
     playerBalance = 1000;
   }
 
-  public void newGame(int playerCount) {
-    hands.clear();
-
-    for (int i = 0; i < playerCount + 1; i = i+1) {
-      hands.add(new Hand(s.grabCard(), s.grabCard()));
-    }
+  public void newGame() {
+    playerHand.clear();
+    dealerHand = (new Hand(s.grabCard(), s.grabCard()));
+    playerHand.add(new Hand(s.grabCard(), s.grabCard()));
   }
 
-  public void grabCard(int h) {
-    hands.get(h).addCard(s.grabCard());
+  public void grabCard(int h, ArrayList<Hand> theHand) {
+    theHand.get(h).addCard(s.grabCard());
   }
-  
-  
+
+
 
   public void drawCards(int handX, int handY) {
     // draws player hands
-    hands.get(0).dealerDrawHand(int(width * .47), int(height * .15));
-    for (int i = 1; i <= hands.size() - 1; i++) {
-      hands.get(i).drawHand(handX, handY);
+    dealerHand.dealerDrawHand(int(width * .47), int(height * .15));
+    for (int i = 0; i <= playerHand.size() - 1; i++) {
+      playerHand.get(i).drawHand(handX, handY);
       handX += 140;
     }
   }
 
- public int getHandCount() {
-   return hands.size() - 1;
- }
+  public Hand getPlayerHand(int hand) {
+    {
+      return playerHand.get(hand);
+    }
+  }
+
   public int getPlayerBalance() {
     return playerBalance;
+  }
+
+
+  public void betAndDeal(int betAmnt) {
+    playerBalance = g.getPlayerBalance() - betAmnt;
+    g.newGame();
+  }
+
+  public boolean isPlayerJackBlack(int i) {
+    if (playerHand.get(i).getValue() == 21) {
+      return true;
+    } else 
+    return false;
   }
 }
