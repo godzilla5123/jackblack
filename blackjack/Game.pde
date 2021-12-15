@@ -62,4 +62,15 @@ class Game {
     } else 
     return false;
   }
+
+  public boolean canHit(int i) {
+    if (playerHand.get(i).getValue() > 21) {
+      return true;
+    } else
+      return false;
+  }
+
+  public void hit(int i) {
+    playerHand.get(i).addCard(s.grabCard());
+  }
 }
