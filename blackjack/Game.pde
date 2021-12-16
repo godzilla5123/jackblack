@@ -16,7 +16,7 @@ class Game {
   public Game() {
     dealerHand = (new Hand(s.grabCard(), s.grabCard()));
     playerHand = new ArrayList<Hand>();
-    playerBalance = 1000;
+    playerBalance = 500;
   }
 
 // Resets game
